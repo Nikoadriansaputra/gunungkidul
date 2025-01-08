@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Holiday - templatemo</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="css/flexslider.css" rel="stylesheet" />
+    <link href="css/templatemo-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+      /* Flexslider container */
+      .tm-banner {
+        position: relative;
+      }
+
+      /* Flexslider images */
+      .flexslider .slides li img {
+        width: 100%;
+        height: 800px; /* Set a fixed height for all images */
+        object-fit: cover; /* Ensure the images cover the entire space without distortion */
+      }
+      .tm-yellow-text {
+        color: #ff5733; /* Red-orange color */
+      }
+      /* Banner text and button */
+      .tm-banner-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        width: 80%; /* Adjust width to make it larger */
+        padding: 20px; /* Add padding around the text */
+      }
+
+      .tm-banner-title {
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .tm-yellow-text {
+        color: #ff5733; /* Use orange color for emphasis */
+      }
+
+      .tm-banner-subtitle {
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch; /* Makes sure all columns stretch to the same height */
+      }
+
+      .col-lg-4,
+      .col-md-4,
+      .col-sm-6 {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; /* Ensures all columns stretch to match height */
+      }
+
+      /* Booking form and image container */
+      .tm-home-box-1 {
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Makes the container take up full height */
+      }
+
+      .tm-home-box-1 .tab-content, /* Booking form container */
+  .tm-home-box-1-2 {
+        flex-grow: 1; /* Ensures the content inside grows to fill the available space */
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tm-home-box-1-2 img {
+        width: 100%;
+        object-fit: cover; /* Ensures images cover the full width and maintain aspect ratio */
+        flex-grow: 1; /* Allows image to take available space and match height */
+      }
+
+      /* If you want to ensure the button at the bottom stays at the bottom */
+      .tm-home-box-1 .form-group:last-child {
+        margin-top: auto; /* Pushes the button to the bottom */
+      }
+      .explore-title {
+        font-size: 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #fff;
+        background: linear-gradient(45deg, #ff6f61, #fcb045); /* Gradient background */
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-align: center;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Text shadow for better readability */
+        padding: 20px 0;
+        animation: glow 1.5s ease-in-out infinite alternate;
+      }
+
+      /* Animation for glowing effect */
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 5px #ff6f61, 0 0 10px #ff6f61, 0 0 15px #ff6f61;
+        }
+        100% {
+          text-shadow: 0 0 15px #fcb045, 0 0 25px #fcb045, 0 0 35px #fcb045;
+        }
+      }
+      /* Image price section styling */
+      .tm-city-price-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        color: white;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .tm-green-gradient-bg {
+        background: linear-gradient(to bottom, #4caf50, #81c784);
+      }
+
+      .tm-red-gradient-bg {
+        background: linear-gradient(to bottom, #f44336, #e57373);
+      }
+      .tm-banner-link {
+        background-color: #f5a623; /* Orange color for the button */
+        color: white;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .tm-banner-link:hover {
+        background-color: #d4881e; /* Darker orange for hover effect */
+      }
+      /* Details container and card */
+      .details-container {
+        margin-top: 20px;
+        display: none;
+        position: relative;
+        text-align: center;
+      }
+
+      .details-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin: 0 auto;
+        max-width: 600px;
+        text-align: center;
+        transition: all 0.3s ease;
+        background-color: #f8f9fa; /* Light gray background for the card */
+      }
+
+      .details-card img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      .details-card h3 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: #1d4d6d; /* Soft teal color for the title */
+      }
+
+      .details-card p {
+        font-size: 1.2rem;
+        color: #4e5c64; /* Grayish-blue color for the text */
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .details-card .address,
+      .details-card .price {
+        font-size: 1.2rem;
+        color: #7a8a92; /* Muted gray for secondary info */
+        margin-bottom: 15px;
+      }
+
+      /* Heading with top margin and soft color */
+      .section-padding-bottom h2 {
+        margin-top: 40px;
+        color: #2d3e50; /* Dark grayish blue for headings */
+      }
+
+      /* Accent color for buttons or interactive elements */
+      .details-card .btn {
+        background-color: #f5a623; /* Warm orange for call-to-action */
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .details-card .btn:hover {
+        background-color: #d4881e; /* Darker orange for hover */
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .details-card {
+          padding: 25px;
+        }
+
+        .details-card h3 {
+          font-size: 1.8rem;
+        }
+
+        .details-card p,
+        .details-card .address,
+        .details-card .price {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="tm-gray-bg">
+    <!-- Header -->
+    <div class="tm-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container">
+            <a href="#" class="tm-site-name">FAFABY HOTEL AND VILLA</a>
+          </div>
+          <div class="col-lg-6 col-md-8 col-sm-9">
+            <div class="mobile-menu-icon">
+              <i class="fa fa-bars"></i>
+            </div>
+            <nav class="tm-nav">
+              <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Review.html">Review</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner -->
+    <section class="tm-banner">
+      <!-- Flexslider -->
+      <div class="flexslider flexslider-banner">
+        <ul class="slides">
+          <li>
+            <div class="tm-banner-inner">
+              <h1 class="tm-banner-title">The only <span class="tm-yellow-text">snorkeling</span> place</h1>
+              <p class="tm-banner-subtitle">in Yogyakarta</p>
+              <a href="#more" class="tm-banner-link">Learn More</a>
+            </div>
+            <img src="img/snorkeling.jpg" alt="Image" />
+          </li>
+          <li>
+            <div class="tm-banner-inner">
+              <h1 class="tm-banner-title">Most <span class="tm-yellow-text">Beautiful</span> View</h1>
+              <p class="tm-banner-subtitle">In Indonesia</p>
+              <a href="#more" class="tm-banner-link">Learn More</a>
+            </div>
+            <img src="img/heha.jpg" alt="Image" />
+          </li>
+          <li>
+            <div class="tm-banner-inner">
+              <h1 class="tm-banner-title">The <span class="tm-yellow-text">Calmest</span> Beach</h1>
+              <p class="tm-banner-subtitle">For Healing</p>
+              <a href="#more" class="tm-banner-link">Learn More</a>
+            </div>
+            <img src="img/pengilon.jpg" alt="Image" />
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- gray bg -->
+    <section class="container tm-home-section-1" id="more">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <!-- Nav tabs -->
+          <div class="tm-home-box-1">
+            <ul class="nav nav-tabs tm-white-bg" role="tablist" id="hotelCarTabs">
+              <li role="presentation" class="active">
+                <a href="#hotel" aria-controls="hotel" role="tab" data-toggle="tab">Hotel</a>
+              </li>
+              <li role="presentation">
+                <a href="#car" aria-controls="car" role="tab" data-toggle="tab">Villa</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active tm-white-bg" id="hotel">
+                <div class="tm-search-box effect2">
+                  <form action="#" method="post" class="hotel-search-form">
+                    <div class="tm-form-inner">
+                      <div class="form-group">
+                        <select class="form-control">
+                          <option value="">-- Select Hotel --</option>
+                          <option value="shangrila">Baron Lighthouse Cottage & Eatery</option>
+                          <option value="chatrium">Ama Awa Resort</option>
+                          <option value="fourseasons">D'ninety Six Inn Gunungkidul</option>
+                          <option value="hilton">Queen of the South Resort</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group date" id="datetimepicker1">
+                          <input type="text" class="form-control" placeholder="Check-in Date" />
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group date" id="datetimepicker2">
+                          <input type="text" class="form-control" placeholder="Check-out Date" />
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="form-group margin-bottom-0">
+                        <select class="form-control">
+                          <option value="">-- Guests --</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5p">5+</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group tm-yellow-gradient-bg text-center">
+                      <button type="submit" name="submit" class="tm-yellow-btn">Check Now</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane fade tm-white-bg" id="car">
+                <div class="tm-search-box effect2">
+                  <form action="#" method="post" class="hotel-search-form">
+                    <div class="tm-form-inner">
+                      <div class="form-group">
+                        <select class="form-control">
+                          <option value="">-- Select Villa --</option>
+                          <option value="shangrila">Blarak Villa</option>
+                          <option value="chatrium">Villa Orion Sundak</option>
+                          <option value="fourseasons">Villa Arimbi</option>
+                          <option value="hilton">Radika Paradise Villa & Cottage</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group date-time" id="datetimepicker3">
+                          <input type="text" class="form-control" placeholder="Pickup Date" />
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group date-time" id="datetimepicker4">
+                          <input type="text" class="form-control" placeholder="Return Date" />
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <select class="form-control">
+                          <option value="">-- Options --</option>
+                          <option value="">Child Seat</option>
+                          <option value="">GPS Navigator</option>
+                          <option value="">Insurance</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group tm-yellow-gradient-bg text-center">
+                      <button type="submit" name="submit" class="tm-yellow-btn">Check Now</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <div class="tm-home-box-1 tm-home-box-1-2 tm-home-box-1-center">
+            <img src="img/ketewel beach villa.jpg" alt="image" class="img-responsive" />
+            <a href="#">
+              <div class="tm-green-gradient-bg tm-city-price-container">
+                <span>Ketewel Beach Villa</span>
+                <span>Rp3.500.000,00</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <div class="tm-home-box-1 tm-home-box-1-2 tm-home-box-1-right">
+            <img src="img/teras kaca hotel.jpg" alt="image" class="img-responsive" />
+            <a href="#">
+              <div class="tm-red-gradient-bg tm-city-price-container">
+                <span>Teras Kaca Hotel</span>
+                <span>Rp500.000,00</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-margin-top"></div>
+    </section>
+
+    <section class="tm-white-bg section-padding-bottom">
+      <div class="container">
+        <h2 class="text-center explore-title">Explore the Heaven of Indonesia</h2>
+        <div id="map" style="height: 500px; width: 100%"></div>
+
+        <div class="details-container">
+          <div class="flexslider">
+            <ul class="slides">
+              <li>
+                <div class="details-card">
+                  <img src="img/attraction1.jpg" alt="Attraction 1" />
+                  <h3>Beach Paradise</h3>
+                  <p>Relax at this serene beach with crystal-clear waters and golden sands.</p>
+                </div>
+              </li>
+              <li>
+                <div class="details-card">
+                  <img src="img/attraction2.jpg" alt="Attraction 2" />
+                  <h3>Mountain Escape</h3>
+                  <p>Hike through scenic trails and enjoy breathtaking mountain views.</p>
+                </div>
+              </li>
+              <li>
+                <div class="details-card">
+                  <img src="img/attraction3.jpg" alt="Attraction 3" />
+                  <h3>City Lights</h3>
+                  <p>Experience the vibrant nightlife and iconic landmarks of the city.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+
+    <script type="text/javascript">
+      // Initialize Leaflet map
+      const map = L.map("map").setView([-8.000564494216725, 110.62802992297432], 10); // Default coordinates: Los Angeles
+
+      // Add OpenStreetMap tile layer
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: 'Fadhli (23611013); <a href="https://www.instagram.com/faizfadhli_/">faizfadhli_</a> contributors',
+      }).addTo(map);
+
+      // Tourist attraction data
+      const attractions = [
+        {
+          coords: [-8.138767897234501, 110.60403795461143],
+          name: "Slili Beach",
+          details: "Small rocky & sandy beach in the bay, with huts, seafood & accommodation nearby.",
+          address: "Jalan beach Krakal, Tepus, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55881",
+          img: "img/slili.jpg",
+        },
+        {
+          coords: [-8.154401374311695, 110.62240572604344],
+          name: "Pok Tunggal Beach",
+          details: "White sand beach surrounded by cliffs & trees, with an iconic tree that is popular as a photo spot.",
+          address: "Desa Tepus, Tepus, Gunung Kidul, Daerah Istimewa Yogyakarta.",
+          img: "img/pok.jpg",
+        },
+        {
+          coords: [-8.116676074211606, 110.52043886653394],
+          name: "Ngrenehan Beach",
+          details: "Sandy beach in a bay dotted with local fishing boats & shaded by a green limestone headland.",
+          address: "Dusun Ngrenehan, Desa Sapto Sari, Kecamatan Kanigoro, Kabupaten Gunung Kidul, Yogyakarta.",
+          img: "img/ngrenehan.jpg",
+        },
+        {
+          coords: [-8.181248745413827, 110.71304293188176],
+          name: "Wediombo Beach",
+          details: "Long & wide sandy coastline, coral rocks with calm water & views of green hills..",
+          address: "Desa Jepitu, Kecamatan Girisubo, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta",
+          img: "img/wediombo.jpg",
+        },
+        {
+          coords: [-7.835277481872364, 110.536771272133],
+          name: "Gunung Api Purba Nglanggeran",
+          details: "A popular sunrise spot at the top of the volcano that takes about an hour to climb.",
+          address: "Nglanggeran Wetan, Nglanggeran, Kec. Patuk, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55862",
+          img: "img/purba.jpg",
+        },
+        {
+          coords: [-7.840719327460306, 110.47874972612203],
+          name: "Bukit Bintang",
+          details: "This hill is famous for its beautiful views, especially when the night sky is filled with stars.",
+          address: "Area Kebun, Srimulyo, Kec. Patuk, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55792",
+          img: "img/bukitbintang.jpg",
+        },
+        {
+          coords: [-8.116676074211606, 110.52043886653394],
+          name: "Gesing Beach",
+          details: "White sand beach on the edge of a steep cliff with bright green water for swimming & eating lobster & Sembilang.",
+          address: "VFR9+H57, Bolang, Girikarto, Kec. Panggang, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55133",
+          img: "img/gesing.webp",
+        },
+        {
+          coords: [-8.017684446589328, 110.34709304319917],
+          name: "Obelix Sea View",
+          details:
+            "is in the highlands so tourists will be treated to views of the blue beach. Apart from that, there are various facilities that tourists can enjoy, such as interesting photo spots and culinary delights at French-style restaurants.",
+          address: "Area Hutan, Giricahyo, Kec. Purwosari, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55872",
+          img: "img/obelix.jpeg",
+        },
+        {
+          coords: [-7.844172671656768, 110.47986895423492],
+          name: "Heha Sky View",
+          details: "Restaurant, cafe & street food stall on the roof located over 3 floors with panoramic views of the city & countryside.",
+          address: "Jl. Dlingo-Patuk No.2, Patuk, Bukit, Kec. Patuk, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55862",
+          img: "img/heha.jpg",
+        },
+        {
+          coords: [-8.10583474055302, 110.46148876042061],
+          name: "Heha Ocean View",
+          details: "Heha Ocean View offers views of the sea south of Gunungkidul from the edge of the cliff and also provides many Instagrammable photo spots",
+          address: "Bolang, Girikarto, Kec. Panggang, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55872.",
+          img: "img/heha2.jpg",
+        },
+        {
+          coords: [-7.929110377104051, 110.6490182180606],
+          name: "Goa Pindul",
+          details: "A popular tourist attraction where visitors float into a large cave on a float tube.",
+          address: "Jalan Goa Pindul Gelaran 2, RT.3/RW.16, Bejiharjo, Kec. Karangmojo, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55813",
+          img: "img/pindul.jpg",
+        },
+        {
+          coords: [-8.0278906077104, 110.63831460678911],
+          name: "Goa Jomblang",
+          details: "A rocky vertical sinkhole that can be explored using caving equipment provided on site.",
+          address: "Jetis, Pacarejo, Kec. Semanu, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55893.",
+          img: "img/jomblang.jpg",
+        },
+        {
+          coords: [-8.133489260838417, 110.55477012214442],
+          name: "Kukup Beach",
+          details: "Beach with offshore coral reef, seafood stalls & sunsets from clifftop pavilions.",
+          address: "Ngepung, Kemadang, Kec. Tanjungsari, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55881.",
+          img: "img/kukup.png",
+        },
+        {
+          coords: [-8.095431059989796, 110.43541308054148],
+          name: "kesirat Beach",
+          details: "A stretch of grass on rugged cliffs with panoramic sunset views, popular for fishing & camping.",
+          address: "Karang, Girikarto, Kec. Panggang, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55872.",
+          img: "img/kesirat.jpg",
+        },
+        {
+          coords: [-8.181315996979606, 110.68337395718622],
+          name: "Siung Beach",
+          details: "Sandy beach covered in trees & cliffs popular with rock climbers & outrigger fishing boats.",
+          address: "Duwet, Purwodadi, Kec. Tepus, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta",
+          img: "img/siung.jpg",
+        },
+      ];
+
+      // Add markers and set up click events
+      attractions.forEach((attraction) => {
+        const marker = L.marker(attraction.coords).addTo(map);
+
+        marker.on("click", () => {
+          const container = $(".details-container");
+          container.html(`
+            <div class="details-card">
+              <img src="${attraction.img}" alt="${attraction.name}" />
+              <h3>${attraction.name}</h3>
+              <p>${attraction.details}</p>
+              <p class="address"><strong>Address:</strong> ${attraction.address}</p>
+
+            </div>
+          `);
+          container.fadeIn();
+        });
+      });
+    </script>
+
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/moment.js"></script>
+    <!-- moment.js -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+    <!-- bootstrap date time picker js, http://eonasdan.github.io/bootstrap-datetimepicker/ -->
+    <script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+    <!--
+	<script src="js/froogaloop.js"></script>
+	<script src="js/jquery.fitvid.js"></script>
+-->
+    <script type="text/javascript" src="js/templatemo-script.js"></script>
+    <!-- Templatemo Script -->
+    <script>
+      // HTML document is loaded. DOM is ready.
+      $(function () {
+        $("#hotelCarTabs a").click(function (e) {
+          e.preventDefault();
+          $(this).tab("show");
+        });
+
+        $(".date").datetimepicker({
+          format: "MM/DD/YYYY",
+        });
+        $(".date-time").datetimepicker();
+
+        // https://css-tricks.com/snippets/jquery/smooth-scrolling/
+        $("a[href*=#]:not([href=#])").click(function () {
+          if (location.pathname.replace(/^\//, "") == this.pathname.replace(/^\//, "") && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+            if (target.length) {
+              $("html,body").animate(
+                {
+                  scrollTop: target.offset().top,
+                },
+                1000
+              );
+              return false;
+            }
+          }
+        });
+      });
+
+      // Load Flexslider when everything is loaded.
+      $(window).load(function () {
+        //	For images only
+        $(".flexslider").flexslider({
+          controlNav: false,
+        });
+      });
+    </script>
+
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/templatemo-script.js"></script>
+    <script>
+      $(function () {
+        $("#hotelCarTabs a").click(function (e) {
+          e.preventDefault();
+          $(this).tab("show");
+        });
+
+        $(".date").datetimepicker({
+          format: "YYYY-MM-DD",
+        });
+
+        $(".date-time").datetimepicker();
+      });
+    </script>
+
+    <footer class="tm-footer">
+      <div class="container">
+        <div class="row text-center">
+          <!-- Contact Info -->
+          <div class="col-lg-6 col-md-6 mb-3">
+            <h3 class="tm-footer-title">Contact Us</h3>
+            <p>
+              <strong>Email:</strong> <a href="mailto:your-email@example.com">kakilima250@gmail.com</a><br />
+              <strong>Phone:</strong> <a href="tel:+1234567890">+62 858 7711 1720</a><br />
+              <strong>Address:</strong> Kaliurang Street, Ngemplak, Yogyakarta
+            </p>
+          </div>
+
+          <!-- Social Media Links -->
+          <div class="col-lg-6 col-md-6 mb-3">
+            <h3 class="tm-footer-title">Follow Us</h3>
+            <ul class="tm-social-links">
+              <li>
+                <a href="https://www.facebook.com/profile.php?id=100092736151838" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+              </li>
+              <li>
+                <a href="https://twitter.com/yourprofile" target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/faizfadhli_/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/faiz-fadhli-99397127b/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Text -->
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p class="tm-footer-text">
+              © Response Project. Designed by
+              <a href="https://www.instagram.com/faizfadhli_/" target="_blank">Faiz Fadhlirobby</a>. All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

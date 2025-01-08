@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Holiday - Contact</title>
+    <!--
+Holiday Template
+http://www.templatemo.com/tm-475-holiday
+-->
+    <!-- Add Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="css/flexslider.css" rel="stylesheet" />
+    <link href="css/templatemo-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+      .tm-contact-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .tm-contact-form-input {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .tm-contact-form label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .tm-contact-form input,
+      .tm-contact-form select,
+      .tm-contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      .tm-contact-form textarea {
+        resize: none;
+      }
+
+      .tm-contact-form button {
+        background-color: #ffc107; /* Yellow button */
+        color: #000;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .tm-contact-form button:hover {
+        background-color: #e0a800;
+      }
+
+      .tm-contact-form h1 {
+        text-align: center;
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .contact-social {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .contact-social a {
+        display: inline-block;
+        margin: 0 5px;
+        font-size: 24px;
+        color: #333;
+        transition: color 0.3s ease;
+      }
+
+      .contact-social a:hover {
+        color: #ffc107;
+      }
+
+      @media (min-width: 768px) {
+        .tm-contact-form {
+          flex-wrap: nowrap;
+          justify-content: space-between;
+        }
+        .tm-contact-form-input {
+          width: 48%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="tm-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container">
+            <a href="#" class="tm-site-name">FAFABY HOTEL AND VILLA</a>
+          </div>
+          <div class="col-lg-6 col-md-8 col-sm-9">
+            <div class="mobile-menu-icon">
+              <i class="fa fa-bars"></i>
+            </div>
+            <nav class="tm-nav">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Review.html" class="active">Review</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner -->
+    <section class="tm-banner">
+      <!-- Flexslider -->
+      <div class="flexslider flexslider-banner">
+        <ul class="slides">
+          <li>
+            <div class="tm-banner-inner">
+              <h1 class="tm-banner-title">Your <span class="tm-yellow-text">Special</span> Tour</h1>
+              <p class="tm-banner-subtitle">In Yogyakarta</p>
+              <a href="#more" class="tm-banner-link">Contact Us</a>
+            </div>
+            <img src="img/banner-3.jpg" alt="Banner 3" />
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- gray bg -->
+    <section class="container tm-home-section-1" id="more">
+      <div class="row">
+        <!-- slider -->
+        <div class="flexslider effect2 effect2-contact tm-contact-box-1">
+          <ul class="slides">
+            <li>
+              <img src="img/world-map.png" alt="image" class="contact-image" />
+              <div class="contact-text">
+                <h2 class="slider-title">Your Perfect Stay in Yogyakarta</h2>
+                <h3 class="slider-subtitle">
+                  Fafaby offers exceptional accommodations throughout the vibrant city of Yogyakarta, with a range of luxurious hotels and villas designed for both relaxation and adventure. Whether you seek a serene escape or an immersive
+                  cultural experience, Fafaby provides the perfect stay, blending comfort with the beauty of Yogyakarta's landscapes.
+                </h3>
+                <p class="slider-description">
+                  Our properties are strategically located near iconic attractions, offering guests the chance to explore the rich heritage, stunning temples, and vibrant city life. From tranquil retreats to convenient access to the city's
+                  bustling attractions, Fafaby ensures a memorable experience for all visitors. <br /><br />
+                  Enjoy unparalleled service, exquisite amenities, and unforgettable experiences with Fafaby. We strive to be your home away from home, making every moment of your stay in Yogyakarta both comfortable and extraordinary.
+                </p>
+                <div class="slider-social">
+                  <a href="#" class="tm-social-icon"><i class="fa fa-twitter"></i></a>
+                  <a href="#" class="tm-social-icon"><i class="fa fa-facebook"></i></a>
+                  <a href="#" class="tm-social-icon"><i class="fa fa-pinterest"></i></a>
+                  <a href="#" class="tm-social-icon"><i class="fa fa-google-plus"></i></a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- white bg -->
+    <section class="section-padding-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="tm-section-header section-margin-top">
+            <div class="col-lg-4 col-md-3 col-sm-3"><hr /></div>
+            <div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Contact Us</h2></div>
+            <div class="col-lg-4 col-md-3 col-sm-3"><hr /></div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- contact form -->
+          <form action="#" method="post" class="tm-contact-form" name="Data">
+            <div class="col-lg-6 col-md-6">
+              <div id="leaflet-map" style="height: 400px"></div>
+              <div class="contact-social">
+                <a href="#" class="tm-social-icon tm-social-facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="tm-social-icon tm-social-dribbble"><i class="fa fa-dribbble"></i></a>
+                <a href="#" class="tm-social-icon tm-social-twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="tm-social-icon tm-social-instagram"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="tm-social-icon tm-social-google-plus"><i class="fa fa-google-plus"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 tm-contact-form-input">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required placeholder="Enter your name" />
+
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required placeholder="Enter your email" />
+
+              <label for="subject">Subject:</label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Select Subject</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Booking Issue">Booking Issue</option>
+                <option value="Feedback">Feedback</option>
+              </select>
+
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Enter your message"></textarea>
+
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer class="tm-footer">
+      <div class="container">
+        <div class="row text-center">
+          <!-- Contact Info -->
+          <div class="col-lg-6 col-md-6 mb-3">
+            <h3 class="tm-footer-title">Contact Us</h3>
+            <p>
+              <strong>Email:</strong> <a href="mailto:your-email@example.com">kakilima250@gmail.com</a><br />
+              <strong>Phone:</strong> <a href="tel:+1234567890">+62 858 7711 1720</a><br />
+              <strong>Address:</strong> Kaliurang Street, Ngemplak, Yogyakarta
+            </p>
+          </div>
+
+          <!-- Social Media Links -->
+          <div class="col-lg-6 col-md-6 mb-3">
+            <h3 class="tm-footer-title">Follow Us</h3>
+            <ul class="tm-social-links">
+              <li>
+                <a href="https://www.facebook.com/profile.php?id=100092736151838" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+              </li>
+              <li>
+                <a href="https://twitter.com/yourprofile" target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/faizfadhli_/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/faiz-fadhli-99397127b/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Text -->
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p class="tm-footer-text">
+              © Response Project. Designed by
+              <a href="https://www.instagram.com/faizfadhli_/" target="_blank">Faiz Fadhlirobby</a>. All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+    <!-- flexslider js -->
+    <script type="text/javascript" src="js/templatemo-script.js"></script>
+    <!-- Templatemo Script -->
+    <script>
+      /* Google map
+      	------------------------------------------------*/
+      var map = "";
+      var center;
+
+      function initialize() {
+        var mapOptions = {
+          zoom: 14,
+          center: new google.maps.LatLng(37.769725, -122.462154),
+          scrollwheel: false,
+        };
+
+        map = new google.maps.Map(document.getElementById("google-map"), mapOptions);
+
+        google.maps.event.addDomListener(map, "idle", function () {
+          calculateCenter();
+        });
+
+        google.maps.event.addDomListener(window, "resize", function () {
+          map.setCenter(center);
+        });
+      }
+
+      function calculateCenter() {
+        center = map.getCenter();
+      }
+
+      function loadGoogleMap() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&" + "callback=initialize";
+        document.body.appendChild(script);
+      }
+
+      // DOM is ready
+      $(function () {
+        // https://css-tricks.com/snippets/jquery/smooth-scrolling/
+        $("a[href*=#]:not([href=#])").click(function () {
+          if (location.pathname.replace(/^\//, "") == this.pathname.replace(/^\//, "") && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+            if (target.length) {
+              $("html,body").animate(
+                {
+                  scrollTop: target.offset().top,
+                },
+                1000
+              );
+              return false;
+            }
+          }
+        });
+
+        // Flexslider
+        $(".flexslider").flexslider({
+          controlNav: false,
+          directionNav: false,
+        });
+
+        // Google Map
+        loadGoogleMap();
+      });
+    </script>
+    <script>
+      // Initialize Leaflet Map
+      function initializeMap() {
+        var map = L.map("leaflet-map").setView([-7.798443834300382, 110.36630219777979], 12); // Coordinates for Yogyakarta, adjust as needed
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        // Add a marker for the location (for example, Yogyakarta's coordinates)
+        L.marker([-7.797068, 110.370529]).addTo(map).bindPopup("<b>Fafaby Hotel & Villa</b><br>Yogyakarta").openPopup();
+      }
+
+      // Wait until the DOM is loaded, then initialize the map
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeMap();
+      });
+      var marker = L.marker([-7.708179112820271, 110.36574621684785]).addTo(map);
+      marker.bindPopup("<b>Fafaby Hotel</b><br>Yogyakarta").openPopup();
+    </script>
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwG28GsPOAbqkLkNr8l4hEcwK7Y4tPfTX1vAg9AsHI5o-oYaHecTm-I4eTnKxg5B6wFzw/exec";
+      const form = document.forms["Data"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, {
+          method: "POST",
+          body: new FormData(form),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+            alert("Form submitted successfully!");
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("Error submitting form: " + error.message);
+          });
+      });
+    </script>
+  </body>
+</html>
